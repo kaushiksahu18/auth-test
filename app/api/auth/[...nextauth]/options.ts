@@ -1,7 +1,6 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import { NextAuthOptions } from "next-auth";
 import { PrismaClient } from "@prisma/client";
-import { CustomUser } from "@/types/next-auth";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -11,7 +10,7 @@ export const authOptions: NextAuthOptions = {
         username: { label: "Username", type: "text" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials, req): Promise<CustomUser | null> {
+      async authorize(credentials, req) {
         const prisma = new PrismaClient();
         try {
           if (!credentials?.username || !credentials.password) {

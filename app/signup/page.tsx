@@ -30,12 +30,11 @@ export function Form() {
         body: JSON.stringify({ username, password }),
       });
       if (response.ok) {
-        signIn("credentials",{
+        signIn("credentials", {
           username,
           password,
-          redirect:true,
-          callbackUrl:"/deshboard"
-        })
+          redirect: true,
+        });
       } else {
         console.error("Failed to sign up");
       }
