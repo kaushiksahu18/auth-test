@@ -2,8 +2,15 @@
 
 import { useState } from "react";
 import { signIn } from "next-auth/react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 function SignUp() {
+  const { data: session } = useSession();
+  const router = useRouter();
+  if (session) {
+    router.push("/");
+  }
   return (
     <div className="w-full h-full bg-zinc-800 flex flex-col justify-center items-center">
       <div className="w-full md:w-[50%] h-[40%] bg-zinc-600 rounded-lg">
