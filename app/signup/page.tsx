@@ -9,6 +9,7 @@ function SignUp() {
   const session = useSession();
   const router = useRouter();
   if (session && session.data) {
+    console.log("redirection to /")
     router.push("/");
   }
   return (

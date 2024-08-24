@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import AuthProvider from "./Providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,12 +18,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className + "w-full h-screen"}>
-      <nav className="flex space-x-4">
-        <Link href={"/chat"} className="bg-zinc-800 hover:bg-zinc-700 hover:border-l-2 px-4 py-1 m-1">Chat</Link>
-        <Link href={"/deshboard"} className="bg-zinc-800 hover:bg-zinc-700 hover:border-l-2 px-4 py-1 m-1">Deshboard</Link>
-      </nav>
-      {children}</body>
+      <AuthProvider>
+        <body className={inter.className + "w-full h-screen"}>
+          <nav className="flex space-x-4">
+            <Link
+              href={"/chat"}
+              className="bg-zinc-800 hover:bg-zinc-700 hover:border-l-2 px-4 py-1 m-1"
+            >
+              Chat
+            </Link>
+            <Link
+              href={"/deshboard"}
+              className="bg-zinc-800 hover:bg-zinc-700 hover:border-l-2 px-4 py-1 m-1"
+            >
+              Deshboard
+            </Link>
+          </nav>
+          {children}
+        </body>
+      </AuthProvider>
     </html>
   );
 }
