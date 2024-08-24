@@ -6,9 +6,9 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 function SignUp() {
-  const { data: session } = useSession();
+  const session = useSession();
   const router = useRouter();
-  if (session) {
+  if (session && session.data) {
     router.push("/");
   }
   return (
