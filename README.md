@@ -1,1 +1,1 @@
-# just an test application to test nest auth and add user details to database
+# just an test application to test next-auth and add user details to database
